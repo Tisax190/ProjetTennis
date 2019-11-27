@@ -1,9 +1,7 @@
 package be.zrt.pojo;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Date;
 
 public class Ordennancement {
 	private int nbrDeSetGagnant;
@@ -15,6 +13,7 @@ public class Ordennancement {
 		this.typeDeTournoi = typeDeTournoi;
 		this.nbrDeSetGagnant = nbrDeSetGagnant;
 		generationEquipe(listeJoueur);
+		this.listeDesMatchs = new ArrayList<Match>();
 	}
 
 	public Ordennancement(String typeDeTournoi, int nbrDeSetGagnant, ArrayList<Joueur> listeJoueurHomme,
@@ -22,6 +21,8 @@ public class Ordennancement {
 		this.typeDeTournoi = typeDeTournoi;
 		this.nbrDeSetGagnant = nbrDeSetGagnant;
 		generationEquipe(listeJoueurHomme, listeJoueurFemme);
+		this.listeDesMatchs = new ArrayList<Match>();
+		generationMatch();
 	}
 
 	private void generationEquipe(ArrayList<Joueur> listeJoueurHomme, ArrayList<Joueur> listeJoueurFemme) {
@@ -58,4 +59,25 @@ public class Ordennancement {
 		}
 	}
 
+	public void generationMatch() {
+		this.listeDesMatchs = new ArrayList<Match>();
+		for (int i = 0; i < listeDesEquipe.size(); i += 2) {
+			ArrayList<Equipe> tmpList = new ArrayList<Equipe>();
+			tmpList.add(listeDesEquipe.get(i));
+			tmpList.add(listeDesEquipe.get(i + 1));
+			this.listeDesMatchs.add(new Match(tmpList, new Arbitre("test", "test", "h"))); // lien db ici
+		}
+	}
+
+	public ArrayList<Match> getListeDesMatchs() {
+		return this.listeDesMatchs;
+	}
+
+	public void jouer() {
+		this.listeDesEquipe.clear();
+		for (Match match : listeDesMatchs) {
+			this.listeDesEquipe.add(match.jouer());
+		}
+
+	}
 }
