@@ -14,15 +14,15 @@ public class Tournoi {
 	}
 
 	public Tournoi() {
-		ArrayList<Ordennancement> tmpList = new ArrayList<Ordennancement>();
-		tmpList.add(new Ordennancement("simpleHomme", 5));
-		tmpList.add(new Ordennancement("simpleFemme", 3));
-		tmpList.add(new Ordennancement("doubleHomme", 3));
-		tmpList.add(new Ordennancement("doubleFemme", 3));
-		tmpList.add(new Ordennancement("mixte", 3));
+		this.typeTournoi = new ArrayList<Ordennancement>();
 		generationListeJoueurHomme(); // méthode pour générer les joueurs et les noms depuis un fichier txt remplis à
-										// l'avance
+		// l'avance
 		generationListeJoueurFemme(); // pour montrer l'utilisation de fichier vu en classe
+		typeTournoi.add(new Ordennancement("simpleHomme", 5, listeJoueurHomme));
+		typeTournoi.add(new Ordennancement("simpleFemme", 3, listeJoueurFemme));
+		typeTournoi.add(new Ordennancement("doubleHomme", 3, listeJoueurHomme));
+		typeTournoi.add(new Ordennancement("doubleFemme", 3, listeJoueurFemme));
+		typeTournoi.add(new Ordennancement("mixte", 3,listeJoueurHomme,listeJoueurFemme));
 	}
 
 	private void generationListeJoueurHomme() {
@@ -31,6 +31,7 @@ public class Tournoi {
 		String nom;
 		String prenom;
 		String tmp[];
+		this.listeJoueurHomme = new ArrayList<Joueur>();
 		try (BufferedReader entree = new BufferedReader(new FileReader(nomFich))) {
 			while ((ligne = entree.readLine()) != null) {
 				tmp = ligne.split(" ");
@@ -50,6 +51,7 @@ public class Tournoi {
 		String nom;
 		String prenom;
 		String tmp[];
+		this.listeJoueurFemme = new ArrayList<Joueur>();
 		try (BufferedReader entree = new BufferedReader(new FileReader(nomFich))) {
 			while ((ligne = entree.readLine()) != null) {
 				tmp = ligne.split(" ");
