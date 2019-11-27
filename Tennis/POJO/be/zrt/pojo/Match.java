@@ -12,4 +12,10 @@ public class Match {
 	private ArrayList<Equipe> lesJoueurs;
 	private Court terrain;
 	private Arbitre arbitre;
+
+	public Match(ArrayList<Equipe> lesJoueurs, Arbitre aribtre, Date dateDuMatch) {
+		this.lesJoueurs = lesJoueurs;
+		this.arbitre = arbitre;
+		this.dateDuMatch = dateDuMatch;
+	}
 }
