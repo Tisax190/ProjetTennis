@@ -20,6 +20,7 @@ public class Tournoi {
 		tmpList.add(new Ordennancement("doubleHomme", 3));
 		tmpList.add(new Ordennancement("doubleFemme", 3));
 		tmpList.add(new Ordennancement("mixte", 3));
+		generationListeJoueur();
 	}
 
 	private void generationListeJoueur() {
