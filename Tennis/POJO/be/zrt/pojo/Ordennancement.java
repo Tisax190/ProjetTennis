@@ -3,6 +3,8 @@ package be.zrt.pojo;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Ordennancement {
 	private int nbrDeSetGagnant;
 	private String typeDeTournoi; // simple H/F || double || mixte
@@ -46,6 +48,7 @@ public class Ordennancement {
 			listeDesEquipe.add(new Equipe(tmpListeJoueur));
 		}
 	}
+
 	private void generationEquipe(ArrayList<Joueur> listeJoueur) {
 		if (this.typeDeTournoi == "simpleHomme" || this.typeDeTournoi == "simpleFemme") {
 			this.listeDesEquipe = new ArrayList<Equipe>();
@@ -90,17 +93,37 @@ public class Ordennancement {
 	public void jouer() {
 
 		this.listeDesEquipe.clear();
+		JOptionPane tmp = new JOptionPane();
+		String txt = "<html><p>Tour du tournoi de : "+this.typeDeTournoi+"</p><table border='1'>"
+				+ " <tr>" + 
+				"    <th><p>Noms des joueurs</p></th>" + 
+				"    <th><p>Nom du vainqueur</p></th>" + 
+				"    <th><p>Score</p></th>"+
+				"    <th><p>Jour</p></th>"+
+				"    <th><p>Heure</p></th>"+
+				"    <th><p>Court</p></th>"+
+				"  </tr>";
 		for (Match match : listeDesMatchs) {
 			this.listeDesEquipe.add(match.jouer());
+			txt += "<tr><td><p>"+match.getJoueurs()+"</p></td>"
+					+ "<td><p>"+match.getVainqueur()+"</p></td>"
+					+ "<td><p>"+match.afficherScore()+"</p></td>"
+					+ "<td><p>"+match.getDate()+"</p></td>"
+					+ "<td><p>"+match.getHeure()+"</p></td>"
+					+ "<td><p>"+match.getCourt()+"</p></td>"
+					+ " </tr>";
 		}
+		txt+="</table></html>";
+		tmp.showMessageDialog(null, txt);
 		if (listeDesEquipe.size() == 1) {
 			fini = true;
-			System.out.println("fin du tournoi " + this.typeDeTournoi + " le gagnant est : " + this.listeDesEquipe.toString());
+			System.out.println(
+					"fin du tournoi " + this.typeDeTournoi + " le gagnant est : " + this.listeDesEquipe.toString());
 		}
 		listeDesMatchs.clear();
 		if (this.typeDeTournoi == "mixte") {
-			//System.out.println(listeDesEquipe);
-			//System.out.println(listeDesEquipe.size());
+			// System.out.println(listeDesEquipe);
+			// System.out.println(listeDesEquipe.size());
 		}
 
 	}

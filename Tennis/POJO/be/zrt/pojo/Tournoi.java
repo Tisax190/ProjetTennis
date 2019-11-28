@@ -9,6 +9,7 @@ public final class Tournoi {
 	ArrayList<Joueur> listeJoueurHomme;
 	ArrayList<Joueur> listeJoueurFemme;
 	ArrayList<Calendrier> listeCalendrier;
+	ArrayList<Court> listeCourt;
 	private static volatile Tournoi instance = null;
 
 	private Tournoi() {

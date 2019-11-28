@@ -37,6 +37,10 @@ public class Match {
 		this.heureDuMatch = heure;
 	}
 
+	public Equipe getVainqueur() {
+		return this.vainqueur;
+	}
+
 	public int[] getScoreA() {
 		return scoreSetA;
 	}
@@ -127,7 +131,7 @@ public class Match {
 		}
 	}
 
-	private String afficherScore() {
+	public String afficherScore() {
 		String tmp = "";
 		for (int i = 0; i < nbrSet; i++) {
 			tmp += Integer.toString(this.scoreSetA[i]);
@@ -188,5 +192,22 @@ public class Match {
 
 	public void setCourt(Court court) {
 		this.court = court;
+	}
+	public int getDate()
+	{
+		return this.dateDuMatch;
+	}
+	public int getHeure()
+	{
+		return this.heureDuMatch;
+	}
+	public Court getCourt()
+	{
+		return this.court;
+	}
+	
+
+	public ArrayList<Equipe> getJoueurs() {
+		return this.lesJoueurs;
 	}
 }
