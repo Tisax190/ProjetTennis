@@ -140,9 +140,9 @@ public final class Tournoi {
 			if (x.getFinale() == true) {
 				continue;
 			} else {
-				//System.out.println("**********Debut tour " + x.getType());
+				System.out.println("**********Debut tour " + x.getType());
 				x.jouer();
-				//System.out.println("**********fin tour " + x.getType());
+				System.out.println("**********fin tour " + x.getType());
 			}
 		}
 

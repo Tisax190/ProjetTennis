@@ -14,6 +14,7 @@ public class Match {
 	private int scoreSetA[];
 	private int scoreSetB[];
 	private int nbrSet;
+	private Court court;
 
 	private ArrayList<Equipe> lesJoueurs;
 	private Court terrain;
@@ -45,6 +46,7 @@ public class Match {
 	}
 
 	public Equipe jouer() {
+		System.out.println("Nouveau match ! " + this.lesJoueurs);
 		this.scoreSetA = new int[nbrSet];
 		this.scoreSetB = new int[nbrSet];
 		for (int i = 0; i < nbrSet; i++) {
@@ -182,5 +184,9 @@ public class Match {
 			}
 		} while (true);
 
+	}
+
+	public void setCourt(Court court) {
+		this.court = court;
 	}
 }

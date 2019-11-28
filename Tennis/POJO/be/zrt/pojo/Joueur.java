@@ -11,4 +11,12 @@ public class Joueur extends Personne {
 	{
 		return nom;
 	}
+	public String getNom()
+	{
+		return this.nom;
+	}
+	public String getPrenom()
+	{
+		return this.nom;
+	}
 }
