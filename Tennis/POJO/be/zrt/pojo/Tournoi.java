@@ -35,7 +35,7 @@ public final class Tournoi {
 		return cpt;
 	}
 
-	public void ordreDesMatchs() {
+	private void ordreDesMatchs() {
 		Ordennancement[] tabMatch = new Ordennancement[5];
 		for (int i = 0; i < 5; i++) {
 			tabMatch[i] = typeTournoi.get(i);
@@ -47,7 +47,7 @@ public final class Tournoi {
 						tabMatch[i].getListeDesMatchs().get(j).setDate(listeCalendrier.get(k).getJour(),
 								listeCalendrier.get(k).getHeure());
 						this.listeCalendrier.get(k).setBloq(true);
-						
+
 					}
 				}
 			}
@@ -121,16 +121,23 @@ public final class Tournoi {
 
 		}
 	}
-	
-	public ArrayList<Ordennancement> getTypeTournoi()
-	{
+
+	public ArrayList<Ordennancement> getTypeTournoi() {
 		return typeTournoi;
 	}
 
 	public void jouer() {
+
+		for (Ordennancement x : typeTournoi) {
+			if (x.getListeDesMatchs()==null) // verif si match déja joué ou non
+			{
+				x.generationMatch();
+			}
+		}
+		this.ordreDesMatchs();
 		for (Ordennancement x : typeTournoi) {
 			x.jouer();
 		}
-		
+
 	}
 }
