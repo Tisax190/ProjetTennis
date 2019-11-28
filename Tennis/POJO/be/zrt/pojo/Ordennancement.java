@@ -1,7 +1,6 @@
 package be.zrt.pojo;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Random;
 
 public class Ordennancement {
@@ -47,7 +46,6 @@ public class Ordennancement {
 			listeDesEquipe.add(new Equipe(tmpListeJoueur));
 		}
 	}
-
 	private void generationEquipe(ArrayList<Joueur> listeJoueur) {
 		if (this.typeDeTournoi == "simpleHomme" || this.typeDeTournoi == "simpleFemme") {
 			this.listeDesEquipe = new ArrayList<Equipe>();

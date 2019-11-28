@@ -15,21 +15,21 @@ public class Match {
 	private int scoreSetB[];
 	private int nbrSet;
 	private Court court;
-
 	private ArrayList<Equipe> lesJoueurs;
-	private Court terrain;
 	private Arbitre arbitre;
 
 	public Match(ArrayList<Equipe> lesJoueurs, Arbitre arbitre, int dateDuMatch, int nbrSet) {
 		this.lesJoueurs = lesJoueurs;
 		this.arbitre = arbitre;
 		this.dateDuMatch = dateDuMatch;
+		this.court = new Court();
 	}
 
 	public Match(ArrayList<Equipe> lesJoueurs, Arbitre arbitre, int nbrSet) {
 		this.lesJoueurs = lesJoueurs;
 		this.arbitre = arbitre;
 		this.nbrSet = nbrSet;
+		this.court = new Court();
 	}
 
 	public void setDate(int jour, int heure) {
