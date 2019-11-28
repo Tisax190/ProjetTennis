@@ -58,6 +58,7 @@ public class Match {
 		 * break; case "doubleMixte": break; }
 		 */
 		this.vainqueur = this.lesJoueurs.get(0);
+		//System.out.println(vainqueur);
 		return this.vainqueur;
 	}
 

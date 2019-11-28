@@ -7,4 +7,8 @@ public class Joueur extends Personne {
 	public Joueur(String nom, String prenom, String sexe) {
 		super(nom, prenom, sexe);
 	}
+	public String toString()
+	{
+		return nom;
+	}
 }
