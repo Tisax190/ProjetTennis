@@ -35,7 +35,7 @@ public final class Tournoi {
 		return cpt;
 	}
 
-	public void ordreDesMatchs() {
+	private void ordreDesMatchs() {
 		Ordennancement[] tabMatch = new Ordennancement[5];
 		for (int i = 0; i < 5; i++) {
 			tabMatch[i] = typeTournoi.get(i);
@@ -47,7 +47,7 @@ public final class Tournoi {
 						tabMatch[i].getListeDesMatchs().get(j).setDate(listeCalendrier.get(k).getJour(),
 								listeCalendrier.get(k).getHeure());
 						this.listeCalendrier.get(k).setBloq(true);
-						
+						break;
 					}
 				}
 			}
@@ -59,9 +59,9 @@ public final class Tournoi {
 		for (int i = 0; i < 21; i++) { // 21 = jours
 			for (int j = 0; j < 30; j++) { // 30 match par jours (15 court x 2 match)
 				if (j % 2 == 0) {
-					this.listeCalendrier.add(new Calendrier(i, 9));
+					this.listeCalendrier.add(new Calendrier(i + 1, 9));
 				} else {
-					this.listeCalendrier.add(new Calendrier(i, 13));
+					this.listeCalendrier.add(new Calendrier(i + 1, 13));
 				}
 
 			}
@@ -121,16 +121,32 @@ public final class Tournoi {
 
 		}
 	}
-	
-	public ArrayList<Ordennancement> getTypeTournoi()
-	{
+
+	public ArrayList<Ordennancement> getTypeTournoi() {
 		return typeTournoi;
 	}
 
 	public void jouer() {
+
 		for (Ordennancement x : typeTournoi) {
-			x.jouer();
+			if (x.getFinale() == true) {
+				continue;
+			} else if (x.getListeDesMatchs().isEmpty()) {
+				x.generationMatch();
+				if (x.getType() == "mixte")
+					System.out.println();
+			}
 		}
-		
+		this.ordreDesMatchs();
+		for (Ordennancement x : typeTournoi) {
+			if (x.getFinale() == true) {
+				continue;
+			} else {
+				//System.out.println("**********Debut tour " + x.getType());
+				x.jouer();
+				//System.out.println("**********fin tour " + x.getType());
+			}
+		}
+
 	}
 }

@@ -37,54 +37,29 @@ public class Match {
 	}
 
 	public Equipe jouer() {
-		Boolean fin = false;
-		switch (key) {
-		case "simpleHomme":
-			int cpt = 1;
-			do {
-
-				int tmp = this.calculJeu();
-				if (cpt == 6) {
-					tmp = 0;
-					fin = true; // faire la fin
-				}
-				if (tmp == 1) {
-					this.scoreSetA++;
-					if (scoreSetA == 6 && scoreSetB < 5) {
-						this.score += "6/" + scoreSetB + " ";
-						this.scoreSetA = 0;
-						this.scoreJeuB = 0;
-						cpt++;
-					}
-				} else if (scoreSetA == 6 && scoreSetB == 6) {
-					// tieBreak
-				} else if (tmp == 2) {
-					this.scoreSetB++;
-					if (scoreSetB == 6 && scoreSetA < 5) {
-						this.score += scoreSetA + "/" + scoreSetB + " ";
-						this.scoreSetA = 0;
-						this.scoreJeuB = 0;
-						cpt++;
-					} else if (scoreSetA == 6 && scoreSetB == 6) {
-						// tieBreak
-					}
-				}
-
-			} while (!fin);
-			break;
-		case "simpleFemme":
-
-			break;
-		case "doubleHomme":
-
-			break;
-		case "doubleFemme":
-
-			break;
-		case "doubleMixte":
-			break;
-		}
-
+		/*
+		 * Boolean fin = false; switch (key) { case "simpleHomme": int cpt = 1; do {
+		 * 
+		 * int tmp = this.calculJeu(); if (cpt == 6) { tmp = 0; fin = true; // faire la
+		 * fin } if (tmp == 1) { this.scoreSetA++; if (scoreSetA == 6 && scoreSetB < 5)
+		 * { this.score += "6/" + scoreSetB + " "; this.scoreSetA = 0; this.scoreJeuB =
+		 * 0; cpt++; } } else if (scoreSetA == 6 && scoreSetB == 6) { // tieBreak } else
+		 * if (tmp == 2) { this.scoreSetB++; if (scoreSetB == 6 && scoreSetA < 5) {
+		 * this.score += scoreSetA + "/" + scoreSetB + " "; this.scoreSetA = 0;
+		 * this.scoreJeuB = 0; cpt++; } else if (scoreSetA == 6 && scoreSetB == 6) { //
+		 * tieBreak } }
+		 * 
+		 * } while (!fin); break; case "simpleFemme":
+		 * 
+		 * break; case "doubleHomme":
+		 * 
+		 * break; case "doubleFemme":
+		 * 
+		 * break; case "doubleMixte": break; }
+		 */
+		this.vainqueur = this.lesJoueurs.get(0);
+		//System.out.println(vainqueur);
+		return this.vainqueur;
 	}
 
 	private int calculJeu() {

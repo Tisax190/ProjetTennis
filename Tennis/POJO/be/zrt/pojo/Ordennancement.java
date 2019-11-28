@@ -8,12 +8,14 @@ public class Ordennancement {
 	private String typeDeTournoi; // simple H/F || double || mixte
 	private ArrayList<Equipe> listeDesEquipe;
 	private ArrayList<Match> listeDesMatchs;
+	private Boolean fini;
 
 	public Ordennancement(String typeDeTournoi, int nbrDeSetGagnant, ArrayList<Joueur> listeJoueur) {
 		this.typeDeTournoi = typeDeTournoi;
 		this.nbrDeSetGagnant = nbrDeSetGagnant;
 		generationEquipe(listeJoueur);
 		this.listeDesMatchs = new ArrayList<Match>();
+		fini = false;
 	}
 
 	public Ordennancement(String typeDeTournoi, int nbrDeSetGagnant, ArrayList<Joueur> listeJoueurHomme,
@@ -22,7 +24,7 @@ public class Ordennancement {
 		this.nbrDeSetGagnant = nbrDeSetGagnant;
 		generationEquipe(listeJoueurHomme, listeJoueurFemme);
 		this.listeDesMatchs = new ArrayList<Match>();
-		generationMatch();
+		fini = false;
 	}
 
 	private void generationEquipe(ArrayList<Joueur> listeJoueurHomme, ArrayList<Joueur> listeJoueurFemme) {
@@ -60,6 +62,7 @@ public class Ordennancement {
 	}
 
 	public void generationMatch() {
+
 		this.listeDesMatchs = new ArrayList<Match>();
 		for (int i = 0; i < listeDesEquipe.size(); i += 2) {
 			ArrayList<Equipe> tmpList = new ArrayList<Equipe>();
@@ -74,10 +77,32 @@ public class Ordennancement {
 	}
 
 	public void jouer() {
+
 		this.listeDesEquipe.clear();
 		for (Match match : listeDesMatchs) {
 			this.listeDesEquipe.add(match.jouer());
 		}
+		if (listeDesEquipe.size() == 1) {
+			fini = true;
+			System.out.println("fin du tournoi " + this.typeDeTournoi + " " + this.listeDesEquipe.toString());
+		}
+		listeDesMatchs.clear();
+		/*if (this.typeDeTournoi == "mixte") {
+			System.out.println(listeDesEquipe);
+			System.out.println(listeDesEquipe.size());
+		}*/
+	}
 
+	public String getType() {
+		return this.typeDeTournoi;
+	}
+
+	public Boolean getFinale() {
+		return this.fini;
+	}
+
+	@Override
+	public String toString() {
+		return this.typeDeTournoi;
 	}
 }

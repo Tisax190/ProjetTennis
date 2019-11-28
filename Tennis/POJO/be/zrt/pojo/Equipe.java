@@ -8,4 +8,12 @@ public class Equipe {
 	public Equipe(ArrayList<Joueur> membreEquipe) {
 		this.membreEquipe = membreEquipe;
 	}
+	public String toString()
+	{
+		String tmp="";
+		for (Joueur joueur : membreEquipe) {
+			tmp+=joueur+" ";
+		}
+		return tmp;
+	}
 }
