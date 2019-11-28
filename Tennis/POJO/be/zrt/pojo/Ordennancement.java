@@ -68,7 +68,8 @@ public class Ordennancement {
 			ArrayList<Equipe> tmpList = new ArrayList<Equipe>();
 			tmpList.add(listeDesEquipe.get(i));
 			tmpList.add(listeDesEquipe.get(i + 1));
-			this.listeDesMatchs.add(new Match(tmpList, new Arbitre("test", "test", "h"))); // lien db ici
+			this.listeDesMatchs.add(new Match(tmpList, new Arbitre("test", "test", "h"), nbrDeSetGagnant)); // lien db
+																											// ici
 		}
 	}
 
@@ -87,10 +88,11 @@ public class Ordennancement {
 			System.out.println("fin du tournoi " + this.typeDeTournoi + " " + this.listeDesEquipe.toString());
 		}
 		listeDesMatchs.clear();
-		/*if (this.typeDeTournoi == "mixte") {
+		if (this.typeDeTournoi == "mixte") {
 			System.out.println(listeDesEquipe);
 			System.out.println(listeDesEquipe.size());
-		}*/
+		}
+
 	}
 
 	public String getType() {

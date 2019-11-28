@@ -133,8 +133,6 @@ public final class Tournoi {
 				continue;
 			} else if (x.getListeDesMatchs().isEmpty()) {
 				x.generationMatch();
-				if (x.getType() == "mixte")
-					System.out.println();
 			}
 		}
 		this.ordreDesMatchs();
