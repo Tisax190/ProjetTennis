@@ -16,7 +16,7 @@ public class Court {
 
 	public Court(int num) {
 		Random rdm = new Random();
-		this.nbrSpect = rdm.nextInt();
+		this.nbrSpect = rdm.nextInt(500);
 		this.num = num;
 		this.estCouvert = true;
 		this.typeDeSurface = "Terre battue";

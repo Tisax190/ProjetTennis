@@ -102,6 +102,7 @@ public class Ordennancement {
 				"    <th><p>Jour</p></th>"+
 				"    <th><p>Heure</p></th>"+
 				"    <th><p>Court</p></th>"+
+				"    <th><p>Nombre de spectateur</p></th>"+
 				"  </tr>";
 		for (Match match : listeDesMatchs) {
 			this.listeDesEquipe.add(match.jouer());
@@ -111,6 +112,7 @@ public class Ordennancement {
 					+ "<td><p>"+match.getDate()+"</p></td>"
 					+ "<td><p>"+match.getHeure()+"</p></td>"
 					+ "<td><p>"+match.getCourt()+"</p></td>"
+					+ "<td><p>"+match.getCourt().getSpectateur()+"</p></td>"
 					+ " </tr>";
 		}
 		txt+="</table></html>";
