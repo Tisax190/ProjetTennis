@@ -14,6 +14,8 @@ public final class Tournoi {
 
 	private Tournoi() {
 		super();
+		this.listeCourt = new ArrayList<Court>();
+		generationCourt();
 		this.typeTournoi = new ArrayList<Ordennancement>();
 		this.listeCalendrier = new ArrayList<Calendrier>();
 		this.genererCalendrier();
@@ -25,6 +27,12 @@ public final class Tournoi {
 		typeTournoi.add(new Ordennancement("doubleHomme", 3, listeJoueurHomme));
 		typeTournoi.add(new Ordennancement("doubleFemme", 3, listeJoueurFemme));
 		typeTournoi.add(new Ordennancement("mixte", 3, listeJoueurHomme, listeJoueurFemme));
+	}
+
+	private void generationCourt() {
+		for (int i = 0; i < 15; i++) { // 15 court
+			listeCourt.add(new Court(i));
+		}
 	}
 
 	private int nbrMatch() {
@@ -46,7 +54,7 @@ public final class Tournoi {
 				for (int k = 0; k < this.listeCalendrier.size(); k++) {
 					if (!listeCalendrier.get(k).getBloq()) {
 						tabMatch[i].getListeDesMatchs().get(j).setDate(listeCalendrier.get(k).getJour(),
-								listeCalendrier.get(k).getHeure());
+								listeCalendrier.get(k).getHeure(), listeCalendrier.get(k).getCourt());
 						this.listeCalendrier.get(k).setBloq(true);
 						break;
 					}
@@ -66,6 +74,14 @@ public final class Tournoi {
 				}
 
 			}
+		}
+		int cpt = 0;
+		for (int i = 0; i < listeCalendrier.size(); i += 2) {
+			if (cpt > 14)
+				cpt = 0;
+
+			listeCalendrier.get(i).setCourt(this.listeCourt.get(cpt));
+			listeCalendrier.get(i + 1).setCourt(this.listeCourt.get(cpt++));
 		}
 	}
 

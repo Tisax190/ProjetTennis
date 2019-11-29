@@ -1,4 +1,4 @@
- package be.zrt.pojo;
+package be.zrt.pojo;
 
 public class Calendrier {
 
@@ -7,11 +7,10 @@ public class Calendrier {
 	private Court terrain;
 	private Boolean dateBloquee;
 
-	public Calendrier(int jour, int heure,Court terrain) {
+	public Calendrier(int jour, int heure) {
 		dateBloquee = false;
 		this.jour = jour;
 		this.heure = heure;
-		this.terrain = terrain;
 	}
 
 	public int getJour() {
@@ -22,13 +21,19 @@ public class Calendrier {
 		return heure;
 	}
 
-	public Boolean getBloq()
-	{
+	public Court getCourt() {
+		return terrain;
+	}
+
+	public Boolean getBloq() {
 		return dateBloquee;
 	}
-	
-	public void setBloq(Boolean pris)
-	{
+
+	public void setCourt(Court terrain) {
+		this.terrain = terrain;
+	}
+
+	public void setBloq(Boolean pris) {
 		this.dateBloquee = pris;
 	}
 

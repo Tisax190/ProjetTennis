@@ -22,19 +22,18 @@ public class Match {
 		this.lesJoueurs = lesJoueurs;
 		this.arbitre = arbitre;
 		this.dateDuMatch = dateDuMatch;
-		this.court = new Court();
 	}
 
 	public Match(ArrayList<Equipe> lesJoueurs, Arbitre arbitre, int nbrSet) {
 		this.lesJoueurs = lesJoueurs;
 		this.arbitre = arbitre;
 		this.nbrSet = nbrSet;
-		this.court = new Court();
 	}
 
-	public void setDate(int jour, int heure) {
+	public void setDate(int jour, int heure,Court court) {
 		this.dateDuMatch = jour;
 		this.heureDuMatch = heure;
+		this.court=court;
 	}
 
 	public Equipe getVainqueur() {

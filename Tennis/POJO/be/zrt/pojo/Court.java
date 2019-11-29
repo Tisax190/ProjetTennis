@@ -14,19 +14,23 @@ public class Court {
 		this.typeDeSurface = typeDeSurface;
 	}
 
-	public Court() {
+	public Court(int num) {
 		Random rdm = new Random();
 		this.nbrSpect = rdm.nextInt();
-		this.num = rdm.nextInt();
+		this.num = num;
 		this.estCouvert = true;
 		this.typeDeSurface = "Terre battue";
 	}
-	public int getSpectateur()
-	{
+
+	public int getSpectateur() {
 		return this.nbrSpect;
 	}
-	public int getNumCourt()
-	{
+
+	public int getNumCourt() {
 		return this.num;
+	}
+
+	public String toString() {
+		return Integer.toString(this.num);
 	}
 }
