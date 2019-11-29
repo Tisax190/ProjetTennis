@@ -1,5 +1,6 @@
 package be.zrt.pojo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Court {
@@ -22,6 +23,10 @@ public class Court {
 		this.typeDeSurface = "Terre battue";
 	}
 
+	public Court() {
+
+	}
+
 	public int getSpectateur() {
 		return this.nbrSpect;
 	}
@@ -32,5 +37,13 @@ public class Court {
 
 	public String toString() {
 		return Integer.toString(this.num);
+	}
+
+	public ArrayList<Court> generationListeCourt() {
+		ArrayList<Court> listeCourt = new ArrayList<Court>();
+		for (int i = 0; i < 15; i++) { // 15 court
+			listeCourt.add(new Court(i));
+		}
+		return listeCourt;
 	}
 }

@@ -30,9 +30,8 @@ public final class Tournoi {
 	}
 
 	private void generationCourt() {
-		for (int i = 0; i < 15; i++) { // 15 court
-			listeCourt.add(new Court(i));
-		}
+		Court court = new Court();
+		this.listeCourt = court.generationListeCourt();
 	}
 
 	private int nbrMatch() {
@@ -65,24 +64,8 @@ public final class Tournoi {
 	}
 
 	private void genererCalendrier() {
-		for (int i = 0; i < 21; i++) { // 21 = jours
-			for (int j = 0; j < 30; j++) { // 30 match par jours (15 court x 2 match)
-				if (j % 2 == 0) {
-					this.listeCalendrier.add(new Calendrier(i + 1, 9));
-				} else {
-					this.listeCalendrier.add(new Calendrier(i + 1, 13));
-				}
-
-			}
-		}
-		int cpt = 0;
-		for (int i = 0; i < listeCalendrier.size(); i += 2) {
-			if (cpt > 14)
-				cpt = 0;
-
-			listeCalendrier.get(i).setCourt(this.listeCourt.get(cpt));
-			listeCalendrier.get(i + 1).setCourt(this.listeCourt.get(cpt++));
-		}
+		Calendrier tmp = new Calendrier();
+		this.listeCalendrier = tmp.generation(listeCourt);
 	}
 
 	public final static Tournoi getInstance() {
